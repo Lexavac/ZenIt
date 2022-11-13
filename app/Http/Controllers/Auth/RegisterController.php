@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\Models\Tb_customer;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+
 
 class RegisterController extends Controller
 {
@@ -57,6 +59,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phoneNumber' => ['required', 'string', 'max:255'],
             'adress' => ['required', 'string', 'max:255'],
+            'remember_token' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -76,6 +79,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'phoneNumber' => $data['phoneNumber'],
             'adress' => $data['adress'],
+            'remember_token' => Str::random(10),
         ]);
     }
 }

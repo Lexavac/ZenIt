@@ -26,10 +26,13 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/icomoon.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
 
+    @vite(['public/js/push.min.js', 'node_modules/push.js/bin/push.min.js',])
+
   </head>
   <body class="goto-here">
 
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+
 	    <div class="container">
 	      <a class="navbar-brand" href="index.html">TeBe</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -516,7 +519,25 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="{{ asset('frontend/js/google-map.js') }}"></script>
   <script src="{{ asset('frontend/js/main.js') }}"></script>
+  <script src="{{ asset('js/push.min.js') }}"></script>
   {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+
+  <script>
+
+
+
+    Push.create("Hi!", {
+        body: "Hi Aku sayang Kamu",
+        timeout: 4000,
+        onClick: function () {
+            window.focus();
+            this.close();
+        }
+    });
+
+
+
+  </script>
 
 
   </body>

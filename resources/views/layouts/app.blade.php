@@ -35,7 +35,7 @@
 
 
     <!-- Scripts -->
-    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/app.css', 'public/js/push.min.js', 'node_modules/push.js/bin/push.min.js',])
 </head>
 <body class="goto-here">
 

@@ -9,6 +9,8 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
+                'node_modules/push.js/bin/push.min.js',
+                'public/js/push.min.js',
             ],
             refresh: true,
         }),

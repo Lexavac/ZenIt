@@ -16,32 +16,39 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request , $product_name)
+    public function index()
     {
 
-        $check = Cart::where('product_name', $product_name)->where('user_ip', Auth()->id())->first();
-        if ($check){
-            Cart::where('product_name', $product_name)->where('user_ip', Auth()->id()) ->increment('quantity');
-            return Redirect()->back()->with([
-                'message' => 'Add More Cart Success !',
-                'type' => 'warning'
-            ]);
-        }else {
-
-            Cart::insert([
-                'product_name' => $request->name,
-                'quantity' => 1,
-                'price' => $request->price,
-                'user_ip' => Auth()->id(),
-                'image' => $request->image,
-            ]);
-            return Redirect()->back()->with([
-                'message' => 'Add Cart Success !',
-                'type' => 'info'
-            ]);
-        }
+        $carts = Cart::All();
+        return view('frontend.cart.index', compact('carts'));
 
     }
+
+    public function inc(Request $request, $id)
+    {
+        $check = Cart::where('id', $id)->where('user_ip', Auth()->id())->first();
+
+        $check->quantity = $check->quantity + 1 ;
+
+        $check->update();
+
+        echo $check;
+
+    }
+
+    public function dec(Request $request, $id)
+    {
+        $check = Cart::where('id', $id)->where('user_ip', Auth()->id())->first();
+
+        $check->quantity = $check->quantity - 1 ;
+
+        $check->update();
+
+        echo $check;
+
+    }
+
+
 
     public function CartPage(Product $product)
 
@@ -50,6 +57,14 @@ class CartController extends Controller
       $carts = Cart::where('user_ip', Auth()->id())->latest()->get();
         return view('frontend.cart.index', compact('carts', 'product'));
 
+    }
+
+    public function CartTab(){
+        $carts = Cart::where('user_ip', Auth()->id())->latest()->get();
+
+
+
+        return view('frontend.cart.index', compact('carts', 'product'));
     }
 
     /**
@@ -68,9 +83,33 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request , $product_name)
     {
-        //
+
+        $check = Cart::where('product_name', $request->name)->where('user_ip', Auth()->id())->first();
+        if ($check){
+            $prod = Cart::where('product_name', $request->name)->where('user_ip', Auth()->id())->first();
+            $qu = $request->quantity;
+            $prod->quantity = $prod->quantity + $qu;
+            $prod->update();
+            return Redirect()->back()->with([
+                'message' => 'Add More Cart Success !',
+                'type' => 'warning'
+            ]);
+        }else {
+
+            Cart::insert([
+                'product_name' => $request->name,
+                'quantity' => $request->quantity,
+                'price' => $request->price,
+                'user_ip' => Auth()->id(),
+                'image' => $request->image,
+            ]);
+            return Redirect()->back()->with([
+                'message' => 'Add Cart Success !',
+                'type' => 'info'
+            ]);
+        }
     }
 
     /**
@@ -113,9 +152,14 @@ class CartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Cart $cart)
     {
-        //
+        $cart->delete(); // Easy right?
+
+        return redirect()->back()->with([
+            'message' => 'Delete successfully!',
+            'type' =>  'danger'
+        ]);
     }
 
     public function product()

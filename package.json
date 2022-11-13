@@ -17,6 +17,7 @@
     },
     "dependencies": {
         "@vitejs/plugin-react": "^2.2.0",
+        "push.js": "^1.0.12",
         "react": "^18.1.0",
         "react-dom": "^18.1.0",
         "sweetalert": "^2.1.2"

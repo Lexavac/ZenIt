@@ -91,7 +91,8 @@
                         var uploadedGalleryMap = {}
                      Dropzone.options.galleryDropzone = {
                          url: "{{ route('admin.products.storeImage') }}",
-                         maxFilesize: 2, // MB
+                         maxFilesize: 5, // MB
+                         maxFiles: 4,
                          acceptedFiles: '.jpeg,.jpg,.png,.gif',
                          addRemoveLinks: true,
                          headers: {

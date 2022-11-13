@@ -86,6 +86,18 @@
                                         </div>
                                     </form> --}}
                                 </div>
+
+                                <form action="">
+                                    <label for="min">MIN :</label>
+
+                                    <input type="number" name="min" id="min">
+
+                                    <label for="max">MAX :</label>
+
+                                    <input type="number" name="max" id="max">
+
+                                    <button type="submit">Submit</button>
+                                </form>
                             <div class="col-lg-4 col-md-4">
                                 <div class="filter__found">
                                     <h6><span>{{ $products->total() }}</span> Products found</h6>

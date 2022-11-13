@@ -10,7 +10,16 @@ class SController extends Controller
 {
     public function index(Request $request,$slug = null){
 
+
         $products = Product::with('category');
+
+        if($request->min != null){
+            $products->where('price', '>', $request->min);
+        }
+
+        if($request->max != null){
+            $products->where('price', '<', $request->max);
+        }
 
         if(!is_null($slug)){
             $category = Tb_productcate::whereSlug($slug)->firstOrFail();
@@ -20,6 +29,7 @@ class SController extends Controller
 
                 $categoriesIds = Tb_productcate::whereCategoryId($category->id)->pluck('id')->toArray();
                 $categoriesIds[] = $category->id;
+
 
                 $products = $products->whereHas('category', function ($query) use ($categoriesIds) {
 
@@ -38,7 +48,7 @@ class SController extends Controller
             }
         }
 
-        $products = $products->paginate(3);
+        $products = $products->paginate(8);
         return view('frontend.shop.index',compact('products'));
 
 

@@ -4,6 +4,7 @@
     <title>Cart</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('frontend/css/open-iconic-bootstrap.min.css') }}">
@@ -60,6 +61,14 @@
         </nav>
     <!-- END nav -->
 
+    @if(session()->has('message'))
+    <div class="alert alert-{{ session()->get('type') }} alert-dismissible fade show">
+        {{ session()->get('message') }}
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+@endif
     <div class="hero-wrap hero-bread" style="background-image: url(https://images6.alphacoders.com/933/933445.jpg);">
       <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -75,46 +84,9 @@
 			<div class="container">
 				<div class="row">
     			<div class="col-md-12 ftco-animate">
-    				<div class="cart-list">
-	    				<table class="table">
-						    <thead class="thead-primary">
-						      <tr class="text-center">
-						        <th>&nbsp;</th>
-						        <th>&nbsp;</th>
-						        <th>Product</th>
-						        <th>Price</th>
-						        <th>Quantity</th>
-						        <th>Total</th>
-						      </tr>
-						    </thead>
-						    <tbody>
-                                @foreach($carts as $cart)
-                                <tr class="text-center">
-						        <td class="product-remove"><a href="#"><span class="ion-ios-close"></span></a></td>
-
-						        <td class="image-prod"><div class="img" style="background-image: url( {{ $cart->image }} );"></div></td>
-
-						        <td class="product-name">
-						        	<h3>{{ $cart->product_name }}</h3>
-						        	<p>Far far away, behind the word mountains, far from the countries</p>
-						        </td>
-
-						        <td class="price"> {{ $cart->price }} </td>
-
-						        <td class="quantity">
-						        	<div class="input-group mb-3">
-                                        <input type="text" name="quantity" class="quantity form-control input-number" value="{{ $cart->quantity }}" min="1" max="100">
-                                    </div>
-                                </td>
-
-						        <td class="total">{{ $total }}</td>
-                            </tr><!-- END TR-->
-
-                            @endforeach
-						    </tbody>
-						  </table>
-					  </div>
-    			</div>
+                    <div class="tablenya">
+                        @include('frontend.cart.table')
+                    </div>
     		</div>
     		<div class="row justify-content-center">
     			<div class="col col-lg-5 col-md-6 mt-5 cart-wrap ftco-animate">
@@ -247,39 +219,61 @@
   <script>
 		$(document).ready(function(){
 
-		var quantitiy=0;
-		   $('.quantity-right-plus').click(function(e){
 
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
+            $.ajaxSetup({
+  headers: {
+    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+  }
+});
+		   $('.quantity-right-plus').click(function(){
 
-		        // If is not undefined
+            var ele = $(this)
 
-		            $('#quantity').val(quantity + 1);
+            var ide = ele.parents('tr').attr('data-id')
+
+            console.log(ele.parents('tr').attr('data-id'))
+
+            $.ajax({
+                   url:'{{ route('cart.inc') }}'+'/'+ ide +'?',
+                   method: "get",
+                   data: {
+                    _token: '{{ csrf_token() }}',
+                    id: ele.parents('tr').attr('data-id')
+                   },
+                   success: location.reload()
+                });
 
 
-		            // Increment
 
 		    });
 
-		     $('.quantity-left-minus').click(function(e){
-		        // Stop acting like a button
-		        e.preventDefault();
-		        // Get the field name
-		        var quantity = parseInt($('#quantity').val());
 
-		        // If is not undefined
 
-		            // Increment
-		            if(quantity>0){
-		            $('#quantity').val(quantity - 1);
-		            }
+		     $('.quantity-left-minus').click(function(){
+                var ele = $(this)
+
+                var ide = ele.parents('tr').attr('data-id')
+
+                console.log(ele.parents('tr').attr('data-id'))
+
+                $.ajax({
+                    url:'{{ route('cart.dec') }}'+'/'+ ide +'?',
+                    method: "get",
+                    data: {
+                    _token: '{{ csrf_token() }}',
+                    id: ele.parents('tr').attr('data-id')
+                    },
+                    success: location.reload()
+                });
+
+
+
+});
 		    });
 
-		});
+
 	</script>
+
 
   </body>
 </html>

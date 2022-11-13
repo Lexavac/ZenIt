@@ -142,6 +142,8 @@
 	                </div>
 		            </div>
 							</div>
+                            <form action="{{ route('cart.index', $product->slug) }}" method="GET">
+                                @csrf
 							<div class="w-100"></div>
 							<div class="input-group col-md-6 d-flex mb-3">
 	             	<span class="input-group-btn mr-2">
@@ -149,7 +151,7 @@
 	                   <i class="ion-ios-remove"></i>
 	                	</button>
 	            		</span>
-	             	<input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+	             	<input type="number" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
 	             	<span class="input-group-btn ml-2">
 	                	<button type="button" class="quantity-right-plus btn" data-type="plus" data-field="">
 	                     <i class="ion-ios-add"></i>
@@ -161,13 +163,13 @@
 	          		<p style="color: #000;">80 piece available</p>
 	          	</div>
           	</div>
-            <form action="{{ route('cart.index', $product->slug) }}" method="GET">
-                @csrf
                 <input type="hidden" name="price" id="" value="{{ $product->price }}">
                 <input type="hidden" name="name" id="" value="{{ $product->name }}">
+                <input type="hidden" id="product_id">
                 <input type="hidden" name="image" id="" value="{{ $product->gallery->first()->getUrl() }}">
 
-                <button type="submit" class="btn btn-black py-3 px-5"><a class="btn btn-black py-3 px-5"> Add to Cart </a></button>
+
+                <button type="submit" onclick="addToCart()" class="btn btn-black py-3 px-5"><a class="btn btn-black py-3 px-5"> Add to Cart </a></button>
             </form>
     			</div>
     		</div>
@@ -356,6 +358,7 @@
 
 		});
 	</script>
+
 
 <script src="jquery.js"></script>
 <script src="jssocials.min.js"></script>
