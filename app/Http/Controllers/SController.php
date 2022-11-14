@@ -14,11 +14,11 @@ class SController extends Controller
         $products = Product::with('category');
 
         if($request->min != null){
-            $products->where('price', '>', $request->min);
+            $products->where('price', '>=', $request->min);
         }
 
         if($request->max != null){
-            $products->where('price', '<', $request->max);
+            $products->where('price', '<=', $request->max);
         }
 
         if(!is_null($slug)){

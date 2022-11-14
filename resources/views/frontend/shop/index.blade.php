@@ -1,295 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>TeBe Shop</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- css native -->
+  <link rel="stylesheet" href="{{ asset('front/search-page.css') }}">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+  </script>
+  <title>ZenIT</title>
+</head>
+
+<body>
+  <section>
+    <!-- navbar -->
+    @include('layouts.sidebar')
+    <!-- end navbar -->
+    <div class="content">
+      <div class="filter-content">
+        <div class="filter">
+          <div class="header-filter">
+            <p>Filter</p>
+          </div>
+          <div class="major">
+            <div class="header-major">
+              <p>Major</p>
+            </div>
+            <div class="list-major">
+                <ul>
+                    @foreach($menu_categories as $menu_category)
+                        <li><a class="dropdown-item" href="{{ route('shop.index', $menu_category->slug) }}">{{ $menu_category->name }}</a></li>
+                        <ul>
+                                @foreach($menu_category->children as $children)
+                                <li><a class="dropdown-item" style="color: #b4b4b4" href="{{ route('shop.index', $children->slug) }}">{{ $children->name }}</a></li>
+                                @endforeach
+                        </ul>
+                        @endforeach
 
 
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-
-    <link rel="stylesheet" href="{{ asset('frontend/css/open-iconic-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/animate.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/owl.theme.default.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/magnific-popup.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('frontend/css/aos.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('frontend/css/ionicons.min.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/jquery.timepicker.css') }}">
-
-
-    <link rel="stylesheet" href="{{ asset('frontend/css/flaticon.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/icomoon.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
-  </head>
-  <body class="goto-here">
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">TeBe</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-	      </button>
-
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="http://127.0.0.1:8000/" class="nav-link">Home</a></li>
-	          <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="shop.html">Shop</a>
-                <a class="dropdown-item" href="product-single.html">Single Product</a>
-                <a class="dropdown-item" href="cart.html">Cart</a>
-                <a class="dropdown-item" href="checkout.html">Checkout</a>
+                    </ul>
+            </div>
+          </div>
+          <div class="price-filter">
+            <div class="header-price">
+              <p>Price</p>
+            </div>
+            <div class="price-inp">
+                <div class="min-price">
+                <form action="">
+                <label for="min">Min</label>
+                <input type="number" name="min" id="min">
               </div>
-            </li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta cta-colored"><a href="cart.html" class="nav-link"><span class="icon-shopping_cart"></span>[0]</a></li>
 
-	        </ul>
-	      </div>
-	    </div>
-	  </nav>
-    <!-- END nav -->
-    <div class="hero-wrap hero-bread" style="background-image: url(https://images7.alphacoders.com/691/691161.png);">
-      <div class="container">
-        <div class="row no-gutters slider-text align-items-center justify-content-center">
-          <div class="col-md-9 ftco-animate text-center">
-          	<p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Products</span></p>
-            <h1 class="mb-0 bread"> Tebe StarMart </h1>
+              <div class="max-price">
+                <label for="max">Max</label>
+                <input type="number" name="max" id="max">
+
+                <button type="submit" style="display: none"></button>
+              </div>
+            </div>
+            </form>
+          </div>
+          <div class="category-filter">
+            <div class="header-category">
+              <p>Category</p>
+            </div>
+            <ul class="menu-category">
+                @foreach($menu_tags as $menu_tag)
+                <li><a class="dropdown-item" href="{{ route('shop.tag', $menu_tag->slug) }}">{{ $menu_tag->name }}</a></li>
+                @endforeach
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="product-content">
+          <div class="header-product-content">
+            <!-- <ul class="breadcrumb">
+              <li><a href="loginseller.html">Home</a></li>
+              <li>explore</li>
+            </ul> -->
+            <div class="title-content">
+              <p>Explore</p>
+            </div>
+            <div class="filter-product">
+              <div class="filter-label">
+                <div class="label-menu">
+                  <p>Broadcast</p>
+                </div>
+                <div class="label-menu">
+                  <p>Broadcast</p>
+                </div>
+                <div class="label-menu">
+                  <p>Broadcast</p>
+                </div>
+              </div>
+              <div class="filter-dropdown">
+                <label for="filter"><i class="fa fa-bars" aria-hidden="true"></i></label>
+                <select name="filter" id="filter" class="option-filter">
+                  <option value="popular">Popular</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="product">
+                <div class="row-top-product">
+                  @forelse($products as $product)
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="{{ $product->gallery->first()->getUrl() }}" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>{{ $product->category['name'] }}</p>
+                    </div>
+                    <div class="name-product">
+                        <p><a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. {{ $product->price }}</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                @empty
+                <div class="col">
+                    <h5 class="text-center">Product Empty</h5>
+                </div>
+                @endforelse
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </section>
+</body>
 
-    <section class="ftco-section bg-light">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-md-8 col-lg-10 order-md-last">
-                    <div class="col-md-8 col-lg-10 order-md-last">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-5">
-                                {{-- <form method="get">
-                                        <div class="filter__sort">
-                                            <span>Sort By</span>
-                                            <select name="sortingBy" onchange="this.form.submit()">
-                                                <option {{ $sorting === 'default' ? 'selected' : null }} value="default">Default</option>
-                                                <option {{ $sorting === 'high-price' ? 'selected' : null }} value="high-price">High Price</option>
-                                                <option {{ $sorting === 'low-price' ? 'selected' : null }} value="low-price">Low Price</option>
-                                            </select>
-                                        </div>
-                                    </form> --}}
-                                </div>
-
-                                <form action="">
-                                    <label for="min">MIN :</label>
-
-                                    <input type="number" name="min" id="min">
-
-                                    <label for="max">MAX :</label>
-
-                                    <input type="number" name="max" id="max">
-
-                                    <button type="submit">Submit</button>
-                                </form>
-                            <div class="col-lg-4 col-md-4">
-                                <div class="filter__found">
-                                    <h6><span>{{ $products->total() }}</span> Products found</h6>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-    				<div class="row">
-
-                        @forelse($products as $product)
-		    			<div class="col-sm-6 col-md-6 col-lg-4 d-flex justify-content-center ftco-animate">
-		    				<div class="product justify-content-center">
-		    					<a href="#" class="img-prod"><img class="img-fluid" src="{{ $product->gallery->first()->getUrl() }}" alt="Colorlib Template">
-		    						<span class="status">30%</span>
-		    						<div class="overlay"></div>
-		    					</a>
-		    					<div class="text py-3 px-3">
-		    						<h3><a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></h3>
-		    						<div class="d-flex">
-		    							<div class="pricing">
-				    						<p class="price"><span class="mr-2 price-dc">$120.00</span><span class="price-sale">${{ $product->price }}</span></p>
-				    					</div>
-				    					<div class="rating">
-			    							<p class="text-right">
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    								<a href="#"><span class="ion-ios-star-outline"></span></a>
-			    							</p>
-			    						</div>
-			    					</div>
-			    					<p class="bottom-area d-flex px-3">
-		    							<a href="#" class="add-to-cart text-center py-2 mr-1"><span>Add to cart <i class="ion-ios-add ml-1"></i></span></a>
-		    							<a href="#" class="buy-now text-center py-2">Buy now<span><i class="ion-ios-cart ml-1"></i></span></a>
-		    						</p>
-		    					</div>
-		    				</div>
-		    			</div>
-                        @empty
-                        <div class="col">
-                            <h5 class="text-center">Product Empty</h5>
-                        </div>
-                        @endforelse
-		    		</div>
-
-		    		<div class="row mt-5">
-		          <div class="col justify-content-center">
-		            <div class="">
-		              <ul>
-		                {{ $products->links() }}
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
-		    	</div>
-
-		    	<div class="col-md-4 col-lg-2 sidebar">
-		    		<div class="sidebar-box-2">
-		    			<h2 class="heading mb-4"><a href="#">Category</a></h2>
-		    			<ul>
-		    				@foreach($menu_categories as $menu_category)
-                                <li><a class="dropdown-item" href="{{ route('shop.index', $menu_category->slug) }}">{{ $menu_category->name }}</a></li>
-                                <ul>
-                                        @foreach($menu_category->children as $children)
-                                        <li><a class="dropdown-item" style="color: #b4b4b4" href="{{ route('shop.index', $children->slug) }}">{{ $children->name }}</a></li>
-                                        @endforeach
-                                </ul>
-                                @endforeach
-
-
-                            </ul>
-
-		    		</div>
-
-
-		    	<div class="flex sidebar">
-		    		<div class="sidebar-box-2">
-		    			<h2 class="heading mb-4"><a href="#">Tags</a></h2>
-		    			<ul>
-                            @foreach($menu_tags as $menu_tag)
-                            <li><a class="dropdown-item" href="{{ route('shop.tag', $menu_tag->slug) }}">{{ $menu_tag->name }}</a></li>
-                            @endforeach
-                        </ul>
-                    </div>
-		    	</div>
-
-    </section>
-
-    <footer class="ftco-footer bg-light ftco-section">
-      <div class="container">
-      	<div class="row">
-      		<div class="mouse">
-						<a href="#" class="mouse-icon">
-							<div class="mouse-wheel"><span class="ion-ios-arrow-up"></span></div>
-						</a>
-					</div>
-      	</div>
-        <div class="row mb-5">
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Winkel</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</p>
-              <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-5">
-              <h2 class="ftco-heading-2">Menu</h2>
-              <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Shop</a></li>
-                <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Journal</a></li>
-                <li><a href="#" class="py-2 d-block">Contact Us</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-md-4">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Help</h2>
-              <div class="d-flex">
-	              <ul class="list-unstyled mr-l-5 pr-l-3 mr-4">
-	                <li><a href="#" class="py-2 d-block">Shipping Information</a></li>
-	                <li><a href="#" class="py-2 d-block">Returns &amp; Exchange</a></li>
-	                <li><a href="#" class="py-2 d-block">Terms &amp; Conditions</a></li>
-	                <li><a href="#" class="py-2 d-block">Privacy Policy</a></li>
-	              </ul>
-	              <ul class="list-unstyled">
-	                <li><a href="#" class="py-2 d-block">FAQs</a></li>
-	                <li><a href="#" class="py-2 d-block">Contact</a></li>
-	              </ul>
-	            </div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-						  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-
-
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
-
-  <script src="{{ asset('frontend/js/jquery.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/jquery-migrate-3.0.1.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/popper.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/jquery.easing.1.3.js') }}"></script>
-  <script src="{{ asset('frontend/js/jquery.waypoints.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/jquery.stellar.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/jquery.magnific-popup.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/aos.js') }}"></script>
-  <script src="{{ asset('frontend/js/jquery.animateNumber.min.js') }}"></script>
-  <script src="{{ asset('frontend/js/bootstrap-datepicker.js') }}"></script>
-  <script src="{{ asset('frontend/js/scrollax.min.js') }}"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="{{ asset('frontend/js/google-map.js') }}"></script>
-  <script src="{{ asset('frontend/js/main.js') }}"></script>
-
-  </body>
 </html>

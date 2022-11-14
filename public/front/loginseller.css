@@ -1,0 +1,303 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+}
+
+body {
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+}
+
+.left-content {
+  width: 50%;
+  height: 100vh;
+  background-color: #5874AF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+
+/* carousell */
+.carousell {
+  width: 100%;
+  height: fit-content;
+  padding-left: 17%;
+  box-sizing: border-box;
+}
+
+.slider-wrapper {
+  width: 500px;
+  overflow: hidden;
+}
+
+.overflow-wrapper {
+  display: flex;
+  gap: 100px;
+  animation: slider 15s infinite;
+}
+
+#slide1,
+#slide2,
+#slide3 {
+  animation: slider 15s infinite
+}
+
+@keyframes slider {
+  0% {
+    margin-left: 0%;
+  }
+
+  18% {
+    margin-left: 0%;
+  }
+
+  36% {
+    margin-left: -125%;
+  }
+
+  54% {
+    margin-left: -125%;
+  }
+
+  72% {
+    margin-left: -245%;
+  }
+
+  90% {
+    margin-left: -245%;
+  }
+
+  100% {
+    margin-left: 0%;
+  }
+}
+
+/* end carousell */
+
+/* form data */
+.right-content {
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.logo p {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.form-data {
+  margin-top: 20px;
+}
+
+.form-data h1 {
+  font-size: 30px;
+}
+
+#registration {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  width: 470px;
+  margin-top: 15px;
+}
+
+.fullname,
+.email,
+.phone-number,
+.major,
+.password {
+  display: flex;
+  flex-direction: column;
+}
+
+#registration input {
+  padding: 12px 10px;
+  border-radius: 8px;
+  width: 440px;
+  border: 1px solid black;
+}
+
+.btn-submit button {
+  width: 465px;
+  border-radius: 8px;
+  height: 45px;
+  background-color: #5874AF;
+  color: white;
+  font-size: 17px;
+  border: none;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.signin {
+  width: fit-content;
+  margin: 10px auto;
+}
+
+.signin span a {
+  color: #5874AF;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* end form data */
+
+
+@media (max-width: 1000px) {
+  body{
+    background-color: #5874AF;
+    overflow: hidden;
+  }
+
+  .content{
+    display: flex;
+    width: 100vw;
+    height: 1000vh;
+    justify-content: center;
+    background-color: #5874AF;
+  }
+
+  .left-content {
+    display: none;
+  }
+
+  .right-content {
+    width: fit-content;
+    background-color: #5874AF;
+  }
+
+  #registration input {
+    border: none;
+
+  }
+
+  .fullname,
+  .email,
+  .phone-number,
+  .major,
+  .password {
+    font-weight: 500;
+  }
+
+  .btn-submit button {
+    border: 1px solid #000;
+  }
+
+  .signin span a {
+    color: #fff;
+  }
+}
+
+@media (max-width: 500px){
+  /* form data */
+.right-content {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo img {
+  width: 50px;
+}
+
+.logo p {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.form-data {
+  margin-top: 20px;
+}
+
+.form-data h1 {
+  font-size: 30px;
+}
+
+#registration {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  width: 300px;
+  margin-top: 15px;
+}
+
+.fullname,
+.email,
+.phone-number,
+.major,
+.password {
+  display: flex;
+  flex-direction: column;
+}
+
+#registration input {
+  padding: 6px 10px;
+  border-radius: 5px;
+  width: 278px;
+  border: 1px solid black;
+}
+
+.btn-submit button {
+  width: 300px;
+  border-radius: 5px;
+  height: 35px;
+  background-color: #5874AF;
+  color: white;
+  font-size: 17px;
+  border: 1px solid #000;
+  margin-top: 5px;
+}
+
+.signin {
+  width: fit-content;
+  margin: 10px auto;
+}
+
+.signin span a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* end form data */
+
+}

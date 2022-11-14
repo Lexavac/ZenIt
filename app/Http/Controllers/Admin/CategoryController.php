@@ -45,6 +45,7 @@ class CategoryController extends Controller
     public function store(Tb_productcateRequest $request)
     {
         $category=Tb_productcate::create($request->validated());
+
         if($request->input('photo', false)){
             $category->addMedia(storage_path('tmp/uploads/') . $request->input('photo'))->toMediaCollection('photo');
 

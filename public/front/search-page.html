@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Font Nunito -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,500;0,600;0,700;0,800;0,900;0,1000;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+    integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <!-- css native -->
+  <link rel="stylesheet" href="search-page.css">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+  </script>
+  <title>ZenIT</title>
+</head>
+
+<body>
+  <section>
+    <!-- navbar -->
+    <div class="nvbr">
+      <div class="logo">
+        <svg viewBox="0 0 1728 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M741.621 55.5807H-78V-34H1812V55.5807H1005.52C988.547 55.5807 984.167 55.5807 978.692 69.3201C974.312 80.3116 963.362 82.3267 958.434 81.9603H779.399C772.281 81.9603 761.331 81.9603 758.046 68.2209C755.418 57.2294 746.001 55.2143 741.621 55.5807Z"
+            fill="#1C3879" />
+        </svg>
+        <div class="title">
+          <p>ZenIT</p>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <div class="search-web">
+            <form class="d-flex" role="search">
+              <div class="layout-search">
+                <input type="text" name="search-web" id="search-web" placeholder="Search">
+                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+            </form>
+          </div>
+          <div class="navbar " id="navbarSupportedContent">
+            <div class="menu">
+              <ul class="nav d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa-solid fa-bell"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img src="assets/user.png" alt="" class="user">
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item user-setting" href="#">Profile user <i class="fa-solid fa-user"></i></a>
+                    </li>
+                    <li><a class="dropdown-item logout" href="loginseller.html">Log In<i
+                          class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item setting" href="#">setting <i class="fa-solid fa-gear"></i></a></li>
+                  </ul>
+                </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- end navbar -->
+    <div class="content">
+      <div class="filter-content">
+        <div class="filter">
+          <div class="header-filter">
+            <p>Filter</p>
+          </div>
+          <div class="major">
+            <div class="header-major">
+              <p>Major</p>
+            </div>
+            <div class="list-major">
+              <ul class="menu-major">
+                <li>
+                  <label for="checkall">
+                    <div class="list-item">
+                      <div class="img-major">
+                        <img src="assets/tes-img.png" alt="">
+                      </div>
+                      <div class="title-major">
+                        <p>All</p>
+                      </div>
+                    </div>
+                  </label>
+                  <div class="checklist-major">
+                    <input type="checkbox" name="" id="checkall">
+                  </div>
+                </li>
+                <li>
+                  <label for="check1">
+                    <div class="list-item">
+                      <div class="img-major">
+                        <img src="assets/bc.png" alt="">
+                      </div>
+                      <div class="title-major">
+                        <p>Broadcast</p>
+                      </div>
+                    </div>
+                  </label>
+                  <div class="checklist-major">
+                    <input type="checkbox" name="" id="check1">
+                  </div>
+                </li>
+                <li>
+                  <label for="check2">
+                    <div class="list-item">
+                      <div class="img-major">
+                        <img src="assets/mm.png" alt="">
+                      </div>
+                      <div class="title-major">
+                        <p>Multimedia</p>
+                      </div>
+                    </div>
+                  </label>
+                  <div class="checklist-major">
+                    <input type="checkbox" name="" id="check2">
+                  </div>
+                </li>
+                <li>
+                  <label for="check3">
+                    <div class="list-item">
+                      <div class="img-major">
+                        <img src="assets/rpl.png" alt="check3">
+                      </div>
+                      <div class="title-major">
+                        <p>PPLG</p>
+                      </div>
+                    </div>
+                  </label>
+                  <div class="checklist-major">
+                    <input type="checkbox" name="" id="check3">
+                  </div>
+                </li>
+                <li>
+                  <label for="check4">
+                    <div class="list-item">
+                      <div class="img-major">
+                        <img src="assets/tjkt.png" alt="">
+                      </div>
+                      <div class="title-major">
+                        <p>TJKT</p>
+                      </div>
+                    </div>
+                  </label>
+                  <div class="checklist-major">
+                    <input type="checkbox" name="" id="check4">
+                  </div>
+                </li>
+                <li>
+                  <label for="check5">
+                    <div class="list-item">
+                      <div class="img-major">
+                        <img src="assets/te.png" alt="">
+                      </div>
+                      <div class="title-major">
+                        <p>TEI</p>
+                      </div>
+                    </div>
+                  </label>
+                  <div class="checklist-major">
+                    <input type="checkbox" name="" id="check5">
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="price-filter">
+            <div class="header-price">
+              <p>Price</p>
+            </div>
+            <div class="price-inp">
+              <div class="min-price">
+                <label for="min">Min</label>
+                <input type="number" name="min" id="min" placeholder="Rp.">
+              </div>
+              <div class="max-price">
+                <label for="max">Max</label>
+                <input type="number" name="max" id="max" placeholder="Rp.">
+              </div>
+            </div>
+          </div>
+          <div class="category-filter">
+            <div class="header-category">
+              <p>Category</p>
+            </div>
+            <ul class="menu-category">
+              <li>
+                <label for="all">All</label>
+                <input type="checkbox" name="all" id="all">
+              </li>
+              <li>
+                <label for="soft">Software</label>
+                <input type="checkbox" name="soft" id="soft">
+              </li>
+              <li>
+                <label for="hard">Hardware</label>
+                <input type="checkbox" name="hard" id="hard">
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="main-content">
+        <div class="product-content">
+          <div class="header-product-content">
+            <!-- <ul class="breadcrumb">
+              <li><a href="loginseller.html">Home</a></li>
+              <li>explore</li>
+            </ul> -->
+            <div class="title-content">
+              <p>Explore</p>
+            </div>
+            <div class="filter-product">
+              <div class="filter-label">
+                <div class="label-menu">
+                  <p>Broadcast</p>
+                </div>
+                <div class="label-menu">
+                  <p>Broadcast</p>
+                </div>
+                <div class="label-menu">
+                  <p>Broadcast</p>
+                </div>
+              </div>
+              <div class="filter-dropdown">
+                <label for="filter"><i class="fa fa-bars" aria-hidden="true"></i></label>
+                <select name="filter" id="filter" class="option-filter">
+                  <option value="popular">Popular</option>
+                </select>
+              </div>
+            </div>
+            <div class="product">
+              <div class="row-top-product">
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="row-top-product">
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-product">
+                  <div class="img-card">
+                    <img src="assets/web1.jpg" alt="">
+                  </div>
+                  <div class="desc-product">
+                    <div class="category-product">
+                      <p>Design Web</p>
+                    </div>
+                    <div class="name-product">
+                      <p>Landing page for Art Gallery</p>
+                    </div>
+                    <div class="row-price">
+                      <div class="price">
+                        <p>Rp. 100.000</p>
+                      </div>
+                      <div class="other-btn">
+                        <div class="btn-detail">
+                          <button><i class="fa-solid fa-cart-shopping"></i></button>
+                          <button><i class="fa fa-heart" aria-hidden="true"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

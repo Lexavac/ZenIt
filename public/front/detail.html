@@ -24,7 +24,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
   <!-- css native -->
-  <link rel="stylesheet" href="{{ asset('front/detail.css') }}">
+  <link rel="stylesheet" href="detail.css">
   <!-- JavaScript Bundle with Popper -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
@@ -35,38 +35,90 @@
 <body>
   <section>
     <!-- navbar -->
-    @php
-                  $total = App\Models\Cart::all()->where('user_ip',auth()->id())->sum(function($a){
-                   return $a->price * $a->quantity;
-                  });
-                  $qty = App\Models\Cart::all()->where('user_ip',auth()->id())->sum('quantity');
-
-
-              @endphp
-
-    @include('layouts.sidebar')
+    <div class="nvbr">
+      <div class="logo">
+        <svg viewBox="0 0 1728 82" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M741.621 55.5807H-78V-34H1812V55.5807H1005.52C988.547 55.5807 984.167 55.5807 978.692 69.3201C974.312 80.3116 963.362 82.3267 958.434 81.9603H779.399C772.281 81.9603 761.331 81.9603 758.046 68.2209C755.418 57.2294 746.001 55.2143 741.621 55.5807Z"
+            fill="#1C3879" />
+        </svg>
+        <div class="title">
+          <p>ZenIT</p>
+        </div>
+      </div>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <div class="search-web">
+            <form class="d-flex" role="search">
+              <div class="layout-search">
+                <input type="text" name="search-web" id="search-web" placeholder="Search">
+                <button><i class="fa fa-search" aria-hidden="true"></i></button>
+              </div>
+            </form>
+          </div>
+          <div class="navbar " id="navbarSupportedContent">
+            <div class="menu">
+              <ul class="nav d-flex align-items-center">
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa-solid fa-bell"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="cart.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img src="assets/user.png" alt="" class="user">
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item user-setting" href="#">Profile user <i class="fa-solid fa-user"></i></a>
+                    </li>
+                    <li><a class="dropdown-item logout" href="loginseller.html">Log In<i
+                          class="fa-solid fa-right-from-bracket"></i></a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item setting" href="#">setting <i class="fa-solid fa-gear"></i></a></li>
+                  </ul>
+                </li>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- end navbar -->
 
     <!-- content -->
     <div class="container">
       <div class="content">
         <div class="product">
           <div class="main-product">
-            <img src="{{ $product->gallery->first()->getUrl() }}" alt="" id="main-product" onclick="prev(this)">
+            <img src="assets/web1.jpg" alt="" id="main-product" onclick="prev(this)">
           </div>
           <div class="other-product">
             <div class="prev">
-                @foreach ($product -> getMedia('gallery') as $gallery)
-              <img src="{{ $gallery->getUrl() }}" alt="">
-                @endforeach
+              <img src="assets/web1.jpg" alt="">
+            </div>
+            <div class="prev">
+              <img src="assets/web2.jpg" alt="">
+            </div>
+            <div class="prev">
+              <img src="assets/web3.jpg" alt="">
+            </div>
+            <div class="prev">
+              <img src="assets/web4.jpg" alt="">
             </div>
           </div>
         </div>
         <div class="description">
           <div class="name-product">
-            <p>{{ $product->name }}</p>
+            <p>Name Product</p>
           </div>
           <div id="rate">
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center"> 
               <div class="ratings">
                 <i class="fa fa-star rating-color"></i>
                 <i class=" fa fa-star rating-color"></i>
@@ -78,10 +130,12 @@
             </div>
           </div>
           <div class="price">
-            <p>Rp. {{ $product->price }}</p>
+            <p>Rp. 150.000</p>
           </div>
           <div class="info-product">
-            <p>{{ $product->desc }}</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio minima similique iusto voluptates dolore
+              libero aut tenetur architecto maxime vitae eos blanditiis debitis quam placeat minus fuga, atque eligendi
+              quas?</p>
           </div>
           <div class="btn-product">
             <a href="checkout-delivery.html"><button class="btn-buy"><i class="fa-solid fa-bag-shopping"></i>Buy Now</button></a>
@@ -294,22 +348,76 @@
           </div>
         </div>
         <div class="related-product">
-            @foreach($related_products as $related_product)
           <div class="card-related">
-            <img class="gambar" src="{{ $related_product->gallery->first()->getUrl() }}" alt="">
+            <img class="gambar" src="assets/web1.jpg" alt="">
             <div class="isinya">
               <div class="details">
                 <div class="nama">
-                  <p><a href="{{ route('product.show', $related_product->slug) }}">{{ $related_product->name }}</a></p>
+                  <p>Template Website</p>
                 </div>
                 <div class="harga">
-                  <p>Rp.{{ $related_product->price }}</p>
+                  <p>Rp.150.000</p>
                 </div>
               </div>
               <img class="detail" src="assets/menu.png" alt="">
             </div>
           </div>
-          @endforeach
+          <div class="card-related">
+            <img class="gambar" src="assets/web1.jpg" alt="">
+            <div class="isinya">
+              <div class="details">
+                <div class="nama">
+                  <p>Template Website</p>
+                </div>
+                <div class="harga">
+                  <p>Rp.150.000</p>
+                </div>
+              </div>
+              <img class="detail" src="assets/menu.png" alt="">
+            </div>
+          </div>
+          <div class="card-related">
+            <img class="gambar" src="assets/web1.jpg" alt="">
+            <div class="isinya">
+              <div class="details">
+                <div class="nama">
+                  <p>Template Website</p>
+                </div>
+                <div class="harga">
+                  <p>Rp.150.000</p>
+                </div>
+              </div>
+              <img class="detail" src="assets/menu.png" alt="">
+            </div>
+          </div>
+          <div class="card-related">
+            <img class="gambar" src="assets/web1.jpg" alt="">
+            <div class="isinya">
+              <div class="details">
+                <div class="nama">
+                  <p>Template Website</p>
+                </div>
+                <div class="harga">
+                  <p>Rp.150.000</p>
+                </div>
+              </div>
+              <img class="detail" src="assets/menu.png" alt="">
+            </div>
+          </div>
+          <div class="card-related">
+            <img class="gambar" src="assets/web1.jpg" alt="">
+            <div class="isinya">
+              <div class="details">
+                <div class="nama">
+                  <p>Template Website</p>
+                </div>
+                <div class="harga">
+                  <p>Rp.150.000</p>
+                </div>
+              </div>
+              <img class="detail" src="assets/menu.png" alt="">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -696,7 +804,7 @@
 
     <!-- end footer -->
   </section>
-  <script src="{{ asset('front/detail.js') }}"></script>
+  <script src="detail.js"></script>
 </body>
 
 </html>
