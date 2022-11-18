@@ -45,7 +45,14 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        $product = Product::create($request->validated());
+        $product = Product::create([
+            'name' => $request->name,
+            'seller_id' => auth()->id(),
+            'desc' => $request->desc,
+            'price' => $request->price,
+            'quantity' => $request->quantity,
+            'category_id' => $request->category_id
+        ]);
         $product->tags()->attach($request->input('tags', [] ));
 
         foreach ($request->input('gallery', []) as $file) {
