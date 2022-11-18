@@ -26,13 +26,15 @@ class CartController extends Controller
 
     public function inc(Request $request, $id)
     {
-        $check = Cart::where('id', $id)->where('user_ip', Auth()->id())->first();
+        $check = Cart::where('id', $id)->where('user_ip', auth()->id())->first();
+
+
 
         $check->quantity = $check->quantity + 1 ;
 
         $check->update();
 
-        echo $check;
+        return redirect()->back();
 
     }
 
@@ -44,7 +46,7 @@ class CartController extends Controller
 
         $check->update();
 
-        echo $check;
+        return redirect()->back();
 
     }
 
@@ -56,7 +58,6 @@ class CartController extends Controller
     {
       $carts = Cart::where('user_ip', Auth()->id())->latest()->get();
         return view('frontend.cart.index', compact('carts', 'product'));
-
     }
 
     public function CartTab(){
@@ -89,8 +90,7 @@ class CartController extends Controller
         $check = Cart::where('product_name', $request->name)->where('user_ip', Auth()->id())->first();
         if ($check){
             $prod = Cart::where('product_name', $request->name)->where('user_ip', Auth()->id())->first();
-            $qu = $request->quantity;
-            $prod->quantity = $prod->quantity + $qu;
+            $prod->quantity += 1;
             $prod->update();
             return Redirect()->back()->with([
                 'message' => 'Add More Cart Success !',
@@ -100,7 +100,7 @@ class CartController extends Controller
 
             Cart::insert([
                 'product_name' => $request->name,
-                'quantity' => $request->quantity,
+                'quantity' => 1,
                 'price' => $request->price,
                 'user_ip' => Auth()->id(),
                 'image' => $request->image,
